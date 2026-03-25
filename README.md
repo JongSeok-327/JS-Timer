@@ -2,7 +2,8 @@
 
 A clean countdown timer that lives in your browser's side panel.
 
-![JS Timer Screenshot](https://github.com/JongSeok-327/JS-Timer/raw/main/public/icons/icon128.png)
+![JS Timer - Running](docs/screenshot-01.png)
+![JS Timer - Warning](docs/screenshot-02.png)
 
 ## Features
 
