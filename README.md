@@ -17,8 +17,7 @@ A clean countdown timer that lives in your browser's side panel.
 - **Lightweight** — no data collection, everything stored locally
 
 ## Install from Chrome Web Store
-
-> Coming soon
+https://chromewebstore.google.com/detail/js-timer/amdbeioeokmifnogjkapbdmkkincmooh
 
 ## Build from Source
 
