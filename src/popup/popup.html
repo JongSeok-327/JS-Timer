@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Timer</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <!-- Setup View -->
+    <div id="setup-view" class="view">
+      <div class="app-header">
+        <span class="app-icon">&#9201;</span>
+        <h1 class="app-title">JS Timer</h1>
+      </div>
+
+      <!-- Custom Time Input -->
+      <div class="time-input-section">
+        <div class="time-inputs">
+          <div class="time-input-group">
+            <button class="spin-btn spin-up" data-target="input-hours">▲</button>
+            <input
+              type="text"
+              id="input-hours"
+              class="time-input"
+              maxlength="2"
+              inputmode="numeric"
+              value="00"
+              placeholder="00"
+            />
+            <button class="spin-btn spin-down" data-target="input-hours">▼</button>
+            <label class="time-label">HH</label>
+          </div>
+          <span class="time-separator">:</span>
+          <div class="time-input-group">
+            <button class="spin-btn spin-up" data-target="input-minutes">▲</button>
+            <input
+              type="text"
+              id="input-minutes"
+              class="time-input"
+              maxlength="2"
+              inputmode="numeric"
+              value="00"
+              placeholder="00"
+            />
+            <button class="spin-btn spin-down" data-target="input-minutes">▼</button>
+            <label class="time-label">MM</label>
+          </div>
+          <span class="time-separator">:</span>
+          <div class="time-input-group">
+            <button class="spin-btn spin-up" data-target="input-seconds">▲</button>
+            <input
+              type="text"
+              id="input-seconds"
+              class="time-input"
+              maxlength="2"
+              inputmode="numeric"
+              value="00"
+              placeholder="00"
+            />
+            <button class="spin-btn spin-down" data-target="input-seconds">▼</button>
+            <label class="time-label">SS</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Buttons -->
+      <div class="quick-buttons">
+        <button class="quick-btn" data-seconds="60">1m</button>
+        <button class="quick-btn" data-seconds="180">3m</button>
+        <button class="quick-btn" data-seconds="300">5m</button>
+        <button class="quick-btn" data-seconds="600">10m</button>
+        <button class="quick-btn" data-seconds="1500">25m</button>
+      </div>
+
+      <!-- Start Button -->
+      <button id="start-btn" class="btn btn-start">Start</button>
+    </div>
+
+    <!-- Countdown View -->
+    <div id="countdown-view" class="view hidden">
+      <!-- Circular Progress -->
+      <div class="progress-container">
+        <svg
+          id="progress-svg"
+          class="progress-svg"
+          viewBox="0 0 120 120"
+          style="transform: rotate(0deg)"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop id="gradient-stop-1" offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
+              <stop id="gradient-stop-2" offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <!-- Background circle -->
+          <circle
+            class="progress-bg"
+            cx="60"
+            cy="60"
+            r="52"
+            fill="none"
+            stroke="#e5e7eb"
+            stroke-width="7"
+          />
+          <!-- Progress circle -->
+          <circle
+            id="progress-circle"
+            class="progress-ring"
+            cx="60"
+            cy="60"
+            r="52"
+            fill="none"
+            stroke="url(#progressGradient)"
+            stroke-width="7"
+            stroke-linecap="round"
+            stroke-dasharray="326.73"
+            stroke-dashoffset="0"
+            transform="rotate(-90 60 60)"
+          />
+          <!-- Glowing dot at the tip of the arc -->
+          <g id="progress-dot-group" transform="translate(60, 8)">
+            <circle id="progress-dot" r="5" fill="#4f46e5" />
+          </g>
+        </svg>
+
+        <!-- Time display inside circle -->
+        <div class="time-display-wrapper">
+          <div id="time-display" class="time-display">00:00</div>
+          <div id="timer-label" class="timer-label">remaining</div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="countdown-controls">
+        <button id="pause-btn" class="btn btn-pause">Pause</button>
+        <button id="stop-btn" class="btn btn-stop">Stop</button>
+      </div>
+
+      <!-- Completion overlay -->
+      <div id="completion-overlay" class="completion-overlay hidden">
+        <div class="completion-content">
+          <div class="completion-icon">&#10003;</div>
+          <div class="completion-text">Time's Up!</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
